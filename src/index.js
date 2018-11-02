@@ -3,13 +3,24 @@ let app = express();
 let bodyParser = require('body-parser');
 
 let {mongoose} = require("./database");
-let registerRoute = require("./routes/register");
+let userRoute = require("./routes/user.route");
+let movieRoute = require("./routes/user.route");
+
+let session = require("express-session");
+
+//Middleware
+app.use(session({
+    secret: 'ahiu33uh2iSIUAH22', // session secret
+    resave: false,
+    saveUninitialized: true
+    }));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
-app.use(registerRoute, (err, request) => {});
+app.use(userRoute);
+app.use(movieRoute);
 
 // Start server
 const PORT = process.env.PORT | 3000;

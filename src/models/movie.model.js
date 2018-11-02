@@ -7,15 +7,10 @@ let MovieSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     duration: {
         type: Number,
-        required: true,
-    },
-    gender: {
-        type: String,
         required: true
     }
 });
