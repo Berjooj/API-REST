@@ -15,8 +15,8 @@ router.get('/new', function(req, res, next) {
 router.post('/new', function(req, res, next) {
   var nome = req.body.nome;
   var sobrenome = req.body.sobrenome;
-  // require("../db").insertNewUser(nome, sobrenome,
-  //   function (){res.redirect("/");});
+  require("../db").insertNewUser(nome, sobrenome,
+    function (){res.redirect("/");});
 });
 
 module.exports = router;
