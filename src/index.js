@@ -1,19 +1,20 @@
 let express = require("express");
 let app = express();
 let personRoute = require("./routes/person");
+let customerRoute = require('./routes/customer');
 let path = require('path');
-let bodyParser = Request('body-parser');
+let bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
 // Middleware
 app.use((request, response, next) => {
     console.log(`${new Date().toString()} => ${request.originalUrl}`, request.body);
-    // res.send('');
     next();
 });
 
 app.use(personRoute);
+app.use(customerRoute);
 app.use(express.static("public"));
 
 // Handler for errors (404 - item not found)

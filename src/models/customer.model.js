@@ -7,8 +7,11 @@ const password = "YDEs274Yb3cfELJ";
 
 mongoose.connect(`mongodb://${user}:${password}@${server}/${database}`);
 
-let CostumerSchema = new mongoose.Schema({
-    name: String,
+let CustomerSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -16,4 +19,4 @@ let CostumerSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Costumer', CostumerSchema);
+module.exports = mongoose.model('Customer', CustomerSchema);
