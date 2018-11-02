@@ -1,4 +1,4 @@
-const mongoCliente = require("mongodb").MongoClient;
+var mongoCliente = require("mongodb").MongoClient;
 mongoCliente.connect("mongodb://admin2:YDEs274Yb3cfELJ@ds235807.mlab.com:35807/heroku_tbhttlkq",
     function (err, conn) {
         if (err) return console.log(err);
