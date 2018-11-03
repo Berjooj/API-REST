@@ -8,6 +8,9 @@ let movieRoute = require("./routes/movie.route");
 
 let session = require("express-session");
 
+// Start server
+const PORT = process.env.PORT | 3000;
+
 //Middleware
 app.use(session({
     secret: 'ahiu33uh2iSIUAH22', // session secret
@@ -21,6 +24,5 @@ app.use(express.static("public"));
 app.use(userRoute);
 app.use(movieRoute);
 
-// Start server
-const PORT = process.env.PORT | 3000;
+
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));
