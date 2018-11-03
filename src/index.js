@@ -4,7 +4,7 @@ let bodyParser = require('body-parser');
 
 let {mongoose} = require("./database");
 let userRoute = require("./routes/user.route");
-let movieRoute = require("./routes/user.route");
+let movieRoute = require("./routes/movie.route");
 
 let session = require("express-session");
 
