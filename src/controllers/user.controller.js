@@ -10,8 +10,11 @@ userController.registerNewUser = async (request, response) => {
     });
 
     await user.save((error, userSuccessfullyRegistredData) => {
-        if(userSuccessfullyRegistredData) response.status(201).json(userSuccessfullyRegistredData);
-        else response.status(400).json({'Response': 'Error 400. Bad request.'});
+        if(userSuccessfullyRegistredData) {
+            request.session.userData = userSuccessfullyRegistredData;
+            response.status(201).redirect('/catalog');
+        }
+        else response.status(400).redirect('/?error=400');
     });
 };
 
@@ -25,18 +28,22 @@ userController.logIn = async (request, response) => {
     };
 
     await UserModel.findOne(user, (err, userData) => {
-        if (err) return response.status(500).json(err);
-        if (!userData) return response.status(404).json({'Response': "Nothing has found"});
+        if (err) return response.status(500).redirect('/login?error=500');
+        if (!userData) return response.status(404).redirect('/login?error=404');
         
         request.session.userData = userData;
 
-        return response.status(200).json({'Response': "Successfully logged in!"});
+        return response.status(200).redirect('/catalog');
     });
 };
 
+userController.getUser = async (request, response) => {
+    response.status(201).json(request.session.userData);
+}
+
 userController.logOut = async (request, response) => {
     request.session.destroy();
-    return response.status(200).send();
+    return response.status(200).redirect('/login');
 }
 
 module.exports = userController;

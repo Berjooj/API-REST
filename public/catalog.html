@@ -6,6 +6,8 @@
    <link rel="stylesheet" href="style/w3.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <script src="./scripts/jquery-3.3.1.min.js"></script>
+    <script src="./scripts//catalogConfig.js"></script>
    <style>
       body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
    </style>
@@ -18,13 +20,15 @@
             <i class="fa fa-remove"></i>
             </a>
             <img src="images/MainIcon.jpg" style="width:45%;" class="w3-round"><br><br>
-            <h4><b>PORTFOLIO</b></h4>
-            <p class="w3-text-grey">Template by W3.CSS</p>
+            <h4>
+                <b id="userName">Null</b>
+            </h4>
+            <p class="w3-text-grey">Bem-vindo(a)!</p>
          </div>
          <div class="w3-bar-block">
-            <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
-            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
-            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>LEAVE</a>
+            <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fas fa-th-list w3-margin-right"></i>Novidades</a> 
+            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-th-list w3-margin-right"></i>AA</a> 
+            <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-sign-out-alt w3-margin-right"></i>Sair</a>
          </div>
       </nav>
       <!-- Overlay effect when opening sidebar on small screens -->
@@ -33,39 +37,35 @@
       <div class="w3-main" style="margin-left:300px">
          <!-- Header -->
          <header id="portfolio">
-            <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+            <a href="#"><img src="images/MainIcon.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
             <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
             <div class="w3-container">
                <h1><b>Novidades</b></h1>
                <div class="w3-section w3-bottombar w3-padding-16">
-                  <span class="w3-margin-right">Gêneros:</span> 
-                  <button class="w3-button w3-black">ALL</button>
-                  <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-                  <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-                  <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+                  <span class="w3-margin-right">Listagem:</span> 
+                  <button class="w3-button w3-blue tablink" onclick="openSelectionCategory(event,'all')">Todos</button>
+                  <button class="w3-button w3-black tablink" onclick="openSelectionCategory(event,'recommended')">Recomendados</button>
+                  <button class="w3-button w3-black tablink" onclick="openSelectionCategory(event,'watched')">Assistidos</button>
                </div>
             </div>
          </header>
          <!-- First Photo Grid-->
          <div class="w3-row-padding">
-            <div class="w3-third w3-container w3-margin-bottom">
-               <!-- <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container w3-margin-bottom all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
                   <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
                </div>
             </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-               <!-- <img src="/w3images/lights.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container w3-margin-bottom all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
                   <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
                </div>
             </div>
-            <div class="w3-third w3-container">
-               <!-- <img src="/w3images/nature.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container recommended all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
@@ -75,24 +75,21 @@
          </div>
          <!-- Second Photo Grid-->
          <div class="w3-row-padding">
-            <div class="w3-third w3-container w3-margin-bottom">
-               <!-- <img src="/w3images/p1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container w3-margin-bottom recommended all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
                   <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
                </div>
             </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-               <!-- <img src="/w3images/p2.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container w3-margin-bottom watched all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
                   <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
                </div>
             </div>
-            <div class="w3-third w3-container">
-               <!-- <img src="/w3images/p3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity"> -->
+            <div class="w3-third w3-container watched all listTag w3-animate-left">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
@@ -112,14 +109,7 @@
             </div>
          </div>
          <!-- Images of Me -->
-         <div class="w3-row-padding w3-padding-16" id="about">
-            <div class="w3-col m6">
-               <img src="/w3images/avatar_g.jpg" alt="Me" style="width:100%">
-            </div>
-            <div class="w3-col m6">
-               <img src="/w3images/me2.jpg" alt="Me" style="width:100%">
-            </div>
-         </div>
+         <div class="w3-row-padding" id="about"></div>
          <div class="w3-container w3-padding-large" style="margin-bottom:32px">
             <h4><b>About Me</b></h4>
             <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -129,7 +119,7 @@
          <!-- Footer -->
          <footer class="w3-container w3-padding-32 w3-gray w3-center">
             <h4>WebMaster Bernardo Moreira</h4>
-            <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+            <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>Voltar ao topo</a>
             <div class="w3-xlarge w3-section">
                <a target="_blank" href="https://www.linkedin.com/in/bernardo-moreira-a35125122/"><i class="fab fa-linkedin-in"></i></a>
                <a target="_blank" href="https://github.com/Berjooj"><i class="fab fa-github"></i></a>
@@ -149,6 +139,28 @@
              document.getElementById("mySidebar").style.display = "none";
              document.getElementById("myOverlay").style.display = "none";
          }
+
+        //ESSE SCRIPT NÃO FOI FEITO POR MIM :)
+        function openSelectionCategory(evt, movieTag) {
+            var i, x, tablinks, y;
+            x = document.getElementsByClassName("listTag");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-blue", " w3-black");
+            }
+            
+            y = document.getElementsByClassName(movieTag);
+            for (i = 0; i < y.length; i++) {
+                y[i].style.display = "block";
+            }
+
+            evt.currentTarget.className = evt.currentTarget.className.replace(" w3-black", " w3-blue");
+            console.log(evt.currentTarget.className);
+        }
       </script>
    </body>
 </html>

@@ -14,9 +14,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
     }));
-
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static("public"));
 app.use(userRoute);
