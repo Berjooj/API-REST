@@ -6,21 +6,24 @@ let {mongoose} = require("./database");
 let userRoute = require("./routes/user.route");
 let movieRoute = require("./routes/movie.route");
 
-let session = require("express-session");
+// let session = require("express-session");
 
 //Middleware
-app.use(session({
-    secret: 'ahiu33uh2iSIUAH22', // session secret
-    resave: false,
-    saveUninitialized: true
-    }));
+// app.use(session({
+//     secret: 'ahiu33uh2iSIUAH22', // session secret
+//     resave: false,
+//     saveUninitialized: true
+//     }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(userRoute);
-app.use(movieRoute)
+// app.use(userRoute);
+// app.use(movieRoute)
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/',  express.static(__dirname + '/src'));
+app.use('/index',  express.static(__dirname + '/src'));
+app.get('/', (request, res) => {
+    res.send("Ola mundo");
+});
 
 
 // Start server
