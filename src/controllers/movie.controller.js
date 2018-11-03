@@ -1,6 +1,7 @@
 let MovieModel = require("../models/movie.model");
 let movieController = {};
 
+// Create Movie
 movieController.createNewMovie = async (request, response) => {
     let movie = new MovieModel({
         name: request.body.name,
@@ -14,22 +15,8 @@ movieController.createNewMovie = async (request, response) => {
     });
 };
 
-movieController.getMovies = async (request, response) => {
-    let moviesDataList = await MovieModel.find();
-    response.status(200).json(moviesDataList);
-}
-
-movieController.getMovie = async (request, response) => {
-    let movieData = await MovieModel.findById(request.params.id);
-    response.status(200).json(movieData);
-}
-
-movieController.deleteMovie = async (request, response) => {
-    let movieData = await MovieModel.findByIdAndRemove(request.params.id);
-    response.status(200).json(movieData);
-}
-
-movieController.editMovie = async (request, response) => {
+// Edit movie by id
+movieController.editMovieById = async (request, response) => {
     let id = request.params.id;
     let movieUpdated = {
         name: request.body.name,
@@ -38,7 +25,25 @@ movieController.editMovie = async (request, response) => {
     };
 
     let movieData = await MovieModel.findByIdAndUpdate(id, {$set: movieUpdated}, {new: true});
+    response.status(200).json({'Response': 'Movie changed successfully.'});
+}
+
+// Get list of movies
+movieController.getMovies = async (request, response) => {
+    let moviesDataList = await MovieModel.find();
+    response.status(200).json(moviesDataList);
+}
+
+// Get movie by id
+movieController.getMovieById = async (request, response) => {
+    let movieData = await MovieModel.findById(request.params.id);
     response.status(200).json(movieData);
+}
+
+// Delete movie by id
+movieController.deleteMovieById = async (request, response) => {
+    let movieData = await MovieModel.findByIdAndRemove(request.params.id);
+    response.status(200).json({'Response': 'Movie deleted successfully.'});
 }
 
 module.exports = movieController;

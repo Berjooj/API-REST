@@ -5,6 +5,7 @@ let bodyParser = require('body-parser');
 let {mongoose} = require("./database");
 let userRoute = require("./routes/user.route");
 let movieRoute = require("./routes/movie.route");
+let evaluationRoute = require("./routes/evaluation.route");
 
 let session = require("express-session");
 
@@ -23,6 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static("public"));
 app.use(userRoute);
 app.use(movieRoute);
-
+app.use(evaluationRoute);
 
 app.listen(PORT);
