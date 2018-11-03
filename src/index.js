@@ -2,11 +2,11 @@ let express = require("express");
 let app = express();
 let bodyParser = require('body-parser');
 
-let {mongoose} = require("./database");
-let userRoute = require("./routes/user.route");
-let movieRoute = require("./routes/movie.route");
+// let {mongoose} = require("./database");
+// let userRoute = require("./routes/user.route");
+// let movieRoute = require("./routes/movie.route");
 
-let session = require("express-session");
+// let session = require("express-session");
 
 //Middleware
 // app.use(session({
@@ -17,7 +17,7 @@ let session = require("express-session");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 // app.use(userRoute);
 // app.use(movieRoute);
 
