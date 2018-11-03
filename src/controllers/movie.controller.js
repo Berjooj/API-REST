@@ -5,7 +5,7 @@ movieController.createNewMovie = async (request, response) => {
     let movie = new MovieModel({
         name: request.body.name,
         description: request.body.description,
-        duration: parseInt(request.body.duration),
+        duration: parseInt(request.body.duration)
     });
 
     await movie.save((error, movieSuccessfullyRegistredData) => {
@@ -23,4 +23,22 @@ movieController.getMovie = async (request, response) => {
     let movieData = await MovieModel.findById(request.params.id);
     response.status(200).json(movieData);
 }
+
+movieController.deleteMovie = async (request, response) => {
+    let movieData = await MovieModel.findByIdAndRemove(request.params.id);
+    response.status(200).json(movieData);
+}
+
+movieController.editMovie = async (request, response) => {
+    let id = request.params.id;
+    let movieUpdated = {
+        name: request.body.name,
+        description: request.body.description,
+        duration: parseInt(request.body.duration)
+    };
+
+    let movieData = await MovieModel.findByIdAndUpdate(id, {$set: movieUpdated}, {new: true});
+    response.status(200).json(movieData);
+}
+
 module.exports = movieController;

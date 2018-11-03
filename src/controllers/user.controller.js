@@ -19,7 +19,12 @@ userController.logIn = async (request, response) => {
     let userEmail = request.body.email;
     let password  = crypto.createHash('md5').update(request.body.password).digest("hex");
 
-    await UserModel.findOne({email: userEmail, password: password}, (err, userData) => {
+    let user = {
+        "email": userEmail, 
+        "password": password
+    };
+
+    await UserModel.findOne(user, (err, userData) => {
         if (err) return response.status(500).json(err);
         if (!userData) return response.status(404).json({'Response': "Nothing has found"});
         

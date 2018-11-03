@@ -8,15 +8,9 @@ router.post('/registerMovie', movieController.createNewMovie);
 router.get('/movieList', movieController.getMovies);
 // Get movie by id
 router.get('/movie/:id', movieController.getMovie);
-//
-// router.put('/:id', movieController.editMovie);
-// router.delete('/:id', movieController.deleteMovie);
-
-
-router.get('/dashboard', (request, response) => {
-    if (!request.session.userData) return response.status(401).send();
-    
-    else response.status(200).send("Logado!");
-});
+// Delete movie by id
+router.delete('/movie/delete/:id', movieController.deleteMovie);
+// Edite movie by id
+router.put('/movie/edit/:id', movieController.editMovie);
 
 module.exports = router;
