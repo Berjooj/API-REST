@@ -7,8 +7,7 @@ let WatchedListSchema = new mongoose.Schema({
     },
     userID: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     }
 });
 

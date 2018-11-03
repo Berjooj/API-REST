@@ -31,6 +31,7 @@
             <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fas fa-th-list w3-margin-right"></i>Novidades</a> 
             <a href="#editMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-edit w3-margin-right"></i>Editar Filme</a> 
             <a href="#insertMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="far fa-plus-square w3-margin-right"></i>Adicionar Filme</a> 
+            <a href="#removeMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="far fa-trash-alt w3-margin-right"></i>Remover Filme</a> 
             <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-sign-out-alt w3-margin-right"></i>Sair</a>
          </div>
       </nav>
@@ -130,8 +131,16 @@
               </div>
               <button id="submitNewMovie" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
             </form>
-            <br><br><br>
+          </div>
+          <!-- Delete movie -->
+          <div class="w3-container w3-padding-large w3-grey" id="removeMovie">
+            <h4><b>Remover filme</b></h4>
             <hr class="w3-opacity">
+                <div class="w3-section">
+                    <select class="w3-input w3-border" id="movieTitleSelect2">
+                    </select>
+                </div>
+              <button id="removeMovieButton" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-times w3-margin-right"></i>Remover</button>
           </div>
          <!-- Footer -->
          <footer class="w3-container w3-padding-32 w3-gray w3-center">
@@ -176,7 +185,6 @@
             }
          
             evt.currentTarget.className = evt.currentTarget.className.replace(" w3-black", " w3-blue");
-            console.log(evt.currentTarget.className);
          }
       </script>
    </body>

@@ -6,6 +6,7 @@ let {mongoose} = require("./database");
 let userRoute = require("./routes/user.route");
 let movieRoute = require("./routes/movie.route");
 let evaluationRoute = require("./routes/evaluation.route");
+let watchedStatusRoute = require("./routes/watchedList.route");
 
 let session = require("express-session");
 
@@ -25,5 +26,6 @@ app.use(express.static("public"));
 app.use(userRoute);
 app.use(movieRoute);
 app.use(evaluationRoute);
+app.use(watchedStatusRoute);
 
 app.listen(PORT);

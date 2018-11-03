@@ -2,6 +2,7 @@ let userData = [];
 let moviesDataList = [];
 
 $(document).ready(function() {
+    // Get user data
     $.ajax({
         dataType: "json",
         url: "/getUser",
@@ -13,6 +14,7 @@ $(document).ready(function() {
         }
     });
 
+    // Get movie list
     $.ajax({
         dataType: "json",
         url: "/movieList",
@@ -22,7 +24,7 @@ $(document).ready(function() {
             reDrawElementes();
             
             moviesDataList.forEach(movieElement => {
-                createMoviePreviewChild(movieElement);
+                createMoviePreviewChild(movieElement, getEvaluation(movieElement), isWatched(movieElement));
                 editAreaOptions(movieElement);
             });
 
@@ -30,10 +32,12 @@ $(document).ready(function() {
         }
     });
 
+    // Check for changes on <option> for edit movie
     $("#movieTitleSelect").on('change', function() {
         updateInputs($("#movieTitleSelect option:selected").val());
     });
 
+    // Submit change (edit movie) event
     $("#submitButton").click(function () {
         $.ajax({
             url: "/movie/edit/" + $("#movieTitleSelect option:selected").val(),
@@ -51,6 +55,7 @@ $(document).ready(function() {
         });
     });
 
+    // Register a new movie event
     $("#submitNewMovie").click(function () {
         $.ajax({
             url: "/registerMovie",
@@ -67,7 +72,65 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Register a new movie event
+    $("#removeMovieButton").click(function () {
+        $.ajax({
+            url: "/movie/delete/" + $("#movieTitleSelect2 option:selected").val(),
+            type: "DELETE",
+            contentType: 'application/json',
+            success: function(response) {
+                alert("Filme deletado com sucesso!");
+                location.reload();
+            }
+        });
+    });
+
+    // Change movie status (!watch to watch)
+    $(document).on("click", ".radioWatch", function () {
+        let movieID = $(this).val();
+        $.ajax({
+            url: "/setWatched",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                movieId: movieID,
+                userId: userData['_id'],
+                status: true
+            }),
+            success: function(response) {
+                alert("Esperamos que tenha gostado!");
+                location.reload();
+            }
+        });
+    }).on("click", ".radioWatched", function () {
+        let movieID = $(this).val();
+        $.ajax({
+            url: "/setWatched",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                movieId: movieID,
+                userId: userData['_id'],
+                status: false
+            }),
+            success: function(response) {
+                alert("Esperamos que tenha gostado!");
+                location.reload();
+            }
+        });
+    });
 });
+
+// Check and return the evaluation rate from that movie
+function getEvaluation (movie) {
+    return 5;
+}
+
+// Check if the user has watched that movie
+function isWatched (movie) {
+    return false;
+}
 
 function updateInputs (movieId) {
     moviesDataList.forEach(movie => {
@@ -83,6 +146,7 @@ function updateInputs (movieId) {
 function reDrawElementes () {
     $("#movieGrid").empty();
     $("#movieTitleSelect").empty();
+    $("#movieTitleSelect2").empty();
 }
 
 function editAreaOptions (movieDescription) {
@@ -92,12 +156,21 @@ function editAreaOptions (movieDescription) {
         .html(movieDescription['name']);
 
     $("#movieTitleSelect").append(movieOption);
+
+    movieOption = $("<option></option>")
+        .val(movieDescription['_id'])
+        .attr("id", movieDescription['_id'])
+        .html(movieDescription['name']);
+    $("#movieTitleSelect2").append(movieOption);
 }
 
-//Default format from W3CSS
-function createMoviePreviewChild (movie) {
+// Movie list (default format from W3CSS)
+function createMoviePreviewChild (movie, evaluation, _isWatched) {
     var containerFather = $("<div></div>")
         .addClass("w3-third w3-container w3-margin-bottom all listTag");
+
+    var _className = (_isWatched) ? 'watched' : 'recommended';
+    containerFather.addClass(_className);
     
     var icon = $("<i></i>")
         .addClass("fas fa-film")
