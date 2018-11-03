@@ -4,10 +4,12 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="style/w3.css">
+   <link rel="stylesheet" href="style/custom.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <script src="./scripts/jquery-3.3.1.min.js"></script>
-    <script src="./scripts//catalogConfig.js"></script>
+   <script src="./scripts/jquery-3.3.1.min.js"></script>
+   <script src="./scripts//catalogController.js"></script>
+   <script src="./scripts//miniMovieController.js"></script>
    <style>
       body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
    </style>
@@ -21,13 +23,13 @@
             </a>
             <img src="images/MainIcon.jpg" style="width:45%;" class="w3-round"><br><br>
             <h4>
-                <b id="userName">Null</b>
+               <b id="userName">Null</b>
             </h4>
             <p class="w3-text-grey">Bem-vindo(a)!</p>
          </div>
          <div class="w3-bar-block">
             <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fas fa-th-list w3-margin-right"></i>Novidades</a> 
-            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-th-list w3-margin-right"></i>AA</a> 
+            <a href="#editMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-edit w3-margin-right"></i>Editar Filme</a> 
             <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-sign-out-alt w3-margin-right"></i>Sair</a>
          </div>
       </nav>
@@ -49,51 +51,25 @@
                </div>
             </div>
          </header>
-         <!-- First Photo Grid-->
-         <div class="w3-row-padding">
-            <div class="w3-third w3-container w3-margin-bottom all listTag w3-animate-left">
+         <!-- Movie Gird-->
+         <div class="w3-row-padding" id="movieGrid" style="display: flex; flex-flow: wrap">
+            <div class="w3-third w3-container w3-margin-bottom watched all listTag">
                <i class="fas fa-film" style="font-size:72px"></i>
                <div class="w3-container w3-white">
                   <p><b>Lorem Ipsum</b></p>
                   <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-               </div>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom all listTag w3-animate-left">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-               </div>
-            </div>
-            <div class="w3-third w3-container recommended all listTag w3-animate-left">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-               </div>
-            </div>
-         </div>
-         <!-- Second Photo Grid-->
-         <div class="w3-row-padding">
-            <div class="w3-third w3-container w3-margin-bottom recommended all listTag w3-animate-left">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-               </div>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom watched all listTag w3-animate-left">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-               </div>
-            </div>
-            <div class="w3-third w3-container watched all listTag w3-animate-left">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                  <ul class="rank">
+                     <li><i class="fas fa-star"></i></li>
+                     <li><i class="fas fa-star"></i></li>
+                     <li><i class="fas fa-star"></i></li>
+                     <li><i class="fas fa-star"></i></li>
+                     <li><i class="fas fa-star"></i></li>
+                  </ul>
+                  <p><input type="radio" value="Visto" name="viewStatus"><b>Visto</b></p>
+                  <p>
+                     <input type="radio" value="Não visto" name="viewStatus" checked>
+                     <b>Não visto</b>
+                  </p>
                </div>
             </div>
          </div>
@@ -108,14 +84,36 @@
                <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
             </div>
          </div>
-         <!-- Images of Me -->
-         <div class="w3-row-padding" id="about"></div>
-         <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-            <h4><b>About Me</b></h4>
-            <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            <hr>
-            <h4>Technical Skills</h4>
-         </div>
+         
+        <!-- Edit movie -->
+        <div class="w3-container w3-padding-large w3-grey" id="editMovie">
+            <h4><b>Editar filme</b></h4>
+            <hr class="w3-opacity">
+            <!-- <form action="/" method="POST"> -->
+                <div class="w3-section">
+                    <select class="w3-input w3-border" id="movieTitleSelect">
+                    </select>
+                </div>
+
+                <div class="w3-section">
+                <label>Novo nome</label>
+                <input class="w3-input w3-border" type="text" name="name" id="movieInputName" required>
+              </div>
+              <div class="w3-section">
+                <label>Nova descrição</label>
+                <input class="w3-input w3-border" type="text" name="description" id="movieInputDescription" required>
+              </div>
+              <div class="w3-section">
+                <label>Nova duração</label>
+                <input class="w3-input w3-border" type="number" name="duration" id="movieInputDuration" required>
+              </div>
+              <button id="submitButton" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
+            <!-- </form> -->
+            <br><br><br>
+            <hr class="w3-opacity">
+          </div>
+        </div>
+        
          <!-- Footer -->
          <footer class="w3-container w3-padding-32 w3-gray w3-center">
             <h4>WebMaster Bernardo Moreira</h4>
@@ -139,15 +137,15 @@
              document.getElementById("mySidebar").style.display = "none";
              document.getElementById("myOverlay").style.display = "none";
          }
-
-        //ESSE SCRIPT NÃO FOI FEITO POR MIM :)
-        function openSelectionCategory(evt, movieTag) {
+         
+         //ESSE SCRIPT NÃO FOI FEITO POR MIM :)
+         function openSelectionCategory(evt, movieTag) {
             var i, x, tablinks, y;
             x = document.getElementsByClassName("listTag");
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
-
+         
             tablinks = document.getElementsByClassName("tablink");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" w3-blue", " w3-black");
@@ -157,10 +155,10 @@
             for (i = 0; i < y.length; i++) {
                 y[i].style.display = "block";
             }
-
+         
             evt.currentTarget.className = evt.currentTarget.className.replace(" w3-black", " w3-blue");
             console.log(evt.currentTarget.className);
-        }
+         }
       </script>
    </body>
 </html>
