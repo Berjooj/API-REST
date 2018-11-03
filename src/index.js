@@ -9,7 +9,7 @@ let movieRoute = require("./routes/movie.route");
 let session = require("express-session");
 
 // Start server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT | 3000;
 
 //Middleware
 app.use(session({

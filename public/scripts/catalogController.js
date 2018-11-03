@@ -50,6 +50,23 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#submitNewMovie").click(function () {
+        $.ajax({
+            url: "/registerMovie",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                name: $('#newMovieInputName').val(),
+                description: $('#newMovieInputDescription').val(),
+                duration: $('#newMovieInputDuration').val()
+            }),
+            success: function(response) {
+                alert("Filme adicionado com sucesso!");
+                location.reload();
+            }
+        });
+    });
 });
 
 function updateInputs (movieId) {
@@ -109,14 +126,17 @@ function createMoviePreviewChild (movie) {
     var movieWatchedP = $("<p></p>");
     var movieWatchedInput = $("<input>")
         .attr("name", "viewStatus")
-        .attr("type", "radio");
+        .attr("type", "radio")
+        .val(movie['_id'])
+        .addClass('radioWatch');;
     var movieWatchedB = $("<b></b>").html("Visto");
 
     var movieWatchP = $("<p></p>");
     var movieWatchInput = $("<input>")
         .attr("name", "viewStatus")
         .attr("type", "radio")
-        .val("Não visto");
+        .val(movie['_id'])
+        .addClass('radioWatched');
     var movieWatchB = $("<b></b>").html("Não visto");
 
     movieWatchedP

@@ -30,6 +30,7 @@
          <div class="w3-bar-block">
             <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fas fa-th-list w3-margin-right"></i>Novidades</a> 
             <a href="#editMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-edit w3-margin-right"></i>Editar Filme</a> 
+            <a href="#insertMovie" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="far fa-plus-square w3-margin-right"></i>Adicionar Filme</a> 
             <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-sign-out-alt w3-margin-right"></i>Sair</a>
          </div>
       </nav>
@@ -109,11 +110,29 @@
               </div>
               <button id="submitButton" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
             <!-- </form> -->
+          </div>
+          <!-- Insert movie -->
+        <div class="w3-container w3-padding-large w3-grey" id="insertMovie">
+            <h4><b>Adicione um Filme</b></h4>
+            <hr class="w3-opacity">
+            <!-- <form action="/" method="POST"> -->
+                <div class="w3-section">
+                <label>Nome</label>
+                <input class="w3-input w3-border" type="text" name="name" id="newMovieInputName" required>
+              </div>
+              <div class="w3-section">
+                <label>Descrição</label>
+                <input class="w3-input w3-border" type="text" name="description" id="newMovieInputDescription" required>
+              </div>
+              <div class="w3-section">
+                <label>Duração</label>
+                <input class="w3-input w3-border" type="number" name="duration" id="newMovieInputDuration" required>
+              </div>
+              <button id="submitNewMovie" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
+            <!-- </form> -->
             <br><br><br>
             <hr class="w3-opacity">
           </div>
-        </div>
-        
          <!-- Footer -->
          <footer class="w3-container w3-padding-32 w3-gray w3-center">
             <h4>WebMaster Bernardo Moreira</h4>
