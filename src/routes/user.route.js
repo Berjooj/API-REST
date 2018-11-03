@@ -32,16 +32,6 @@ router.get('/login', (request, response) => {
     });
 });
 
-router.get('/', (request, response) => {
-    fileSystem.readFile('./public/index.html', null, (err, htmlFile) => {
-        if (err) {
-            response.writeHead(404);
-        }
-        response.write(htmlFile);
-        response.end();
-    });
-});
-
 // Debug
 router.get('/dashboard', (request, response) => {
     if (!request.session.userData) return response.status(401).send();
