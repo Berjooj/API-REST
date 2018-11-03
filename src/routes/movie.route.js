@@ -7,7 +7,7 @@ router.post('/registerMovie', movieController.createNewMovie);
 // Get movie list
 router.get('/movieList', movieController.getMovies);
 // Get movie by id
-router.get('/movie?id=', movieController.getMovie);
+router.get('/movie/:id', movieController.getMovie);
 //
 // router.put('/:id', movieController.editMovie);
 // router.delete('/:id', movieController.deleteMovie);

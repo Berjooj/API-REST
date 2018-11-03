@@ -20,7 +20,6 @@ movieController.getMovies = async (request, response) => {
 }
 
 movieController.getMovie = async (request, response) => {
-    console.log(request.params.id);
     let movieData = await MovieModel.findById(request.params.id);
     response.status(200).json(movieData);
 }
