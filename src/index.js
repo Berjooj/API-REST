@@ -17,7 +17,7 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 // app.use(userRoute);
 // app.use(movieRoute);
 
