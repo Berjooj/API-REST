@@ -1,4 +1,5 @@
 let WatchListStatusModel = require("../models/watchedList.model");
+let FullMovieListModel = require("../models/movie.model");
 let watchListStatusController = {};
 
 // Update status
@@ -40,9 +41,46 @@ watchListStatusController.setWatchedStatusById = async (request, response) => {
     return response.status(200).json({'Response': 'Status changed successfully.'});
 };
 
-// Get list of watched movies
-watchListStatusController.getWatchedList = async (request, response) => {
+// Get list of watched movies by user ID
+watchListStatusController.getWatchedListByUserId = async (request, response) => {
+    let userID = request.params.id;
+    let watchedMoviesDataArray = [];
+    let moviesDataList = await WatchListStatusModel.find();
     
+    moviesDataList.forEach(movie => {
+        if (movie['userID'] == userID)
+            watchedMoviesDataArray[watchedMoviesDataArray.length] = movie;
+    });
+
+    response.status(200).json(watchedMoviesDataArray);
+}
+
+// Get list of non-watched movies by user ID
+watchListStatusController.getNotWatchedListByUserId = async (request, response) => {
+    let userID = request.params.id;
+    let notWatchedMoviesDataArray = [];
+    let watchedMoviesDataArray = [];
+
+    let moviesDataList = await WatchListStatusModel.find();
+    let fullMoviesDataList = await FullMovieListModel.find();
+    // Select movies I've watched before
+    for (var i = 0; i < fullMoviesDataList.length; i++) {
+        for (var j = 0; j < moviesDataList.length; j++) {
+            if (userID == moviesDataList[j]['userID']) {
+                if (fullMoviesDataList[i]['_id'] == moviesDataList[j]['movieID']) {
+                    watchedMoviesDataArray[watchedMoviesDataArray.length] = fullMoviesDataList[i];
+                }
+            }
+        }
+    }
+   
+    // Select movies that I haven't watched before
+    fullMoviesDataList.forEach(movie => {
+        if (!watchedMoviesDataArray.includes(movie))
+            notWatchedMoviesDataArray[notWatchedMoviesDataArray.length] = movie;
+    });
+
+    response.status(200).json(notWatchedMoviesDataArray);
 }
 
 function isEmpty (obj) {

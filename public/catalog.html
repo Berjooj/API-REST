@@ -55,25 +55,7 @@
          </header>
          <!-- Movie Gird-->
          <div class="w3-row-padding" id="movieGrid" style="display: flex; flex-flow: wrap">
-            <div class="w3-third w3-container w3-margin-bottom watched all listTag">
-               <i class="fas fa-film" style="font-size:72px"></i>
-               <div class="w3-container w3-white">
-                  <p><b>Lorem Ipsum</b></p>
-                  <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-                  <ul class="rank">
-                     <li><i class="fas fa-star"></i></li>
-                     <li><i class="fas fa-star"></i></li>
-                     <li><i class="fas fa-star"></i></li>
-                     <li><i class="fas fa-star"></i></li>
-                     <li><i class="fas fa-star"></i></li>
-                  </ul>
-                  <p><input type="radio" value="Visto" name="viewStatus"><b>Visto</b></p>
-                  <p>
-                     <input type="radio" value="Não visto" name="viewStatus" checked>
-                     <b>Não visto</b>
-                  </p>
-               </div>
-            </div>
+            <h3>Carregando...</h3>
          </div>
          <!-- Pagination -->
          <div class="w3-center w3-padding-32">
@@ -107,7 +89,7 @@
               </div>
               <div class="w3-section">
                 <label>Nova duração</label>
-                <input class="w3-input w3-border" type="number" name="duration" id="movieInputDuration" required>
+                <input class="w3-input w3-border" type="number" placeholder="(número em minutos)" name="duration" id="movieInputDuration" required>
               </div>
               <button id="submitButton" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
             <!-- </form> -->
@@ -127,7 +109,7 @@
               </div>
               <div class="w3-section">
                 <label>Duração</label>
-                <input class="w3-input w3-border" type="number" name="duration" id="newMovieInputDuration" required>
+                <input class="w3-input w3-border" type="number" placeholder="(número em minutos)" name="duration" id="newMovieInputDuration" required>
               </div>
               <button id="submitNewMovie" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-save w3-margin-right"></i>Salvar</button>
             </form>
@@ -141,7 +123,9 @@
                     </select>
                 </div>
               <button id="removeMovieButton" class="w3-button w3-black w3-margin-bottom"><i class="fas fa-times w3-margin-right"></i>Remover</button>
-          </div>
+              <br><br><br>
+              <hr class="w3-opacity">
+            </div>
          <!-- Footer -->
          <footer class="w3-container w3-padding-32 w3-gray w3-center">
             <h4>WebMaster Bernardo Moreira</h4>

@@ -1,5 +1,6 @@
 let userData = [];
 let moviesDataList = [];
+let movieLis
 
 $(document).ready(function() {
     // Get user data
@@ -37,7 +38,7 @@ $(document).ready(function() {
         updateInputs($("#movieTitleSelect option:selected").val());
     });
 
-    // Submit change (edit movie) event
+    // Change (edit movie) event
     $("#submitButton").click(function () {
         $.ajax({
             url: "/movie/edit/" + $("#movieTitleSelect option:selected").val(),
@@ -73,7 +74,7 @@ $(document).ready(function() {
         });
     });
 
-    // Register a new movie event
+    // Delete a movie event
     $("#removeMovieButton").click(function () {
         $.ajax({
             url: "/movie/delete/" + $("#movieTitleSelect2 option:selected").val(),
@@ -129,6 +130,7 @@ function getEvaluation (movie) {
 
 // Check if the user has watched that movie
 function isWatched (movie) {
+
     return false;
 }
 
