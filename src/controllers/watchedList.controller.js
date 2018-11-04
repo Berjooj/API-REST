@@ -45,12 +45,20 @@ watchListStatusController.setWatchedStatusById = async (request, response) => {
 watchListStatusController.getWatchedListByUserId = async (request, response) => {
     let userID = request.params.id;
     let watchedMoviesDataArray = [];
-    let moviesDataList = await WatchListStatusModel.find();
     
-    moviesDataList.forEach(movie => {
-        if (movie['userID'] == userID)
-            watchedMoviesDataArray[watchedMoviesDataArray.length] = movie;
-    });
+    let moviesDataList = await WatchListStatusModel.find();
+    let fullMoviesDataList = await FullMovieListModel.find();
+
+    // Select movies I've watched before
+    for (var i = 0; i < fullMoviesDataList.length; i++) {
+        for (var j = 0; j < moviesDataList.length; j++) {
+            if (userID == moviesDataList[j]['userID']) {
+                if (fullMoviesDataList[i]['_id'] == moviesDataList[j]['movieID']) {
+                    watchedMoviesDataArray[watchedMoviesDataArray.length] = fullMoviesDataList[i];
+                }
+            }
+        }
+    }
 
     response.status(200).json(watchedMoviesDataArray);
 }
