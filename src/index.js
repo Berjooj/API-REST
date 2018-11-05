@@ -11,7 +11,7 @@ let watchedStatusRoute = require("./routes/watchedList.route");
 let session = require("express-session");
 
 // Start server
-const PORT = process.env.PORT;// | 3000;
+const PORT = process.env.PORT | 3000;
 
 //Middleware
 app.use(session({

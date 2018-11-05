@@ -3,55 +3,8 @@ let moviesDataList = [];
 // let movieLis
 
 $(document).ready(function() {
-    // Get user data
-    $.ajax({
-        dataType: "json",
-        url: "/getUser",
-        timeout: 5000,
-        success: function(_userData) {
-            userData = _userData;
-            $("#userName").html(userData['name']);
 
-            // Get watched movie list
-            $.ajax({
-                dataType: "json",
-                url: "/getWatchedList/" + userData['_id'],
-                timeout: 4000,
-                success: function(_moviesDataList) {
-                    console.log(_moviesDataList);
-                    reDrawElementes();
-
-                    _moviesDataList.forEach(movieElement => {
-                        moviesDataList[moviesDataList.length] = movieElement;
-
-                        createMoviePreviewChild(movieElement, getEvaluation(movieElement), true);
-                        editAreaOptions(movieElement);
-                    });
-                    
-                    updateInputs($("#movieTitleSelect option:selected").val());
-
-                    // Get not watched movie list
-                    $.ajax({
-                        dataType: "json",
-                        url: "getNotWatchedList/" + userData['_id'],
-                        context: document.body,
-                        success: function(_moviesDataList) {
-                            // reDrawElementes();
-
-                            _moviesDataList.forEach(movieElement => {
-                                moviesDataList[moviesDataList.length] = movieElement;
-
-                                createMoviePreviewChild(movieElement, getEvaluation(movieElement), false);
-                                editAreaOptions(movieElement);
-                            });
-                            
-                            updateInputs($("#movieTitleSelect option:selected").val());
-                        }
-                    });
-                }
-            });
-        }
-    });
+    setUpContent();
 
     // Check for changes on <option> for edit movie
     $("#movieTitleSelect").on('change', function() {
@@ -71,7 +24,8 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 alert("Filme alterado com sucesso!");
-                location.reload();
+                // location.reload();
+                setUpContent();
             }
         });
     });
@@ -89,7 +43,7 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 alert("Filme adicionado com sucesso!");
-                location.reload();
+                setUpContent();
             }
         });
     });
@@ -102,7 +56,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             success: function(response) {
                 alert("Filme deletado com sucesso!");
-                location.reload();
+                // location.reload();
+                setUpContent();
             }
         });
     });
@@ -121,7 +76,8 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 alert("Esperamos que tenha gostado!");
-                location.reload();
+                // location.reload();
+                setUpContent();
             }
         });
     }).on("click", ".radioWatched", function () {
@@ -137,7 +93,8 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 alert("Esperamos que tenha gostado!");
-                location.reload();
+                // location.reload();
+                setUpContent();
             }
         });
     });
@@ -163,6 +120,59 @@ function updateInputs (movieId) {
             return;
         }
     });
+}
+
+function setUpContent () {
+        $("html, body").animate({scrollTop: 0}, 1000);
+        // Get user data
+        $.ajax({
+            dataType: "json",
+            url: "/getUser",
+            timeout: 5000,
+            success: function(_userData) {
+                userData = _userData;
+                $("#userName").html(userData['name']);
+    
+                // Get watched movie list
+                $.ajax({
+                    dataType: "json",
+                    url: "/getWatchedList/" + userData['_id'],
+                    timeout: 4000,
+                    success: function(_moviesDataList) {
+                        // console.log(_moviesDataList);
+                        reDrawElementes();
+    
+                        _moviesDataList.forEach(movieElement => {
+                            moviesDataList[moviesDataList.length] = movieElement;
+    
+                            createMoviePreviewChild(movieElement, getEvaluation(movieElement), true);
+                            editAreaOptions(movieElement);
+                        });
+                        
+                        updateInputs($("#movieTitleSelect option:selected").val());
+    
+                        // Get not watched movie list
+                        $.ajax({
+                            dataType: "json",
+                            url: "getNotWatchedList/" + userData['_id'],
+                            context: document.body,
+                            success: function(_moviesDataList) {
+                                // reDrawElementes();
+    
+                                _moviesDataList.forEach(movieElement => {
+                                    moviesDataList[moviesDataList.length] = movieElement;
+    
+                                    createMoviePreviewChild(movieElement, getEvaluation(movieElement), false);
+                                    editAreaOptions(movieElement);
+                                });
+                                
+                                updateInputs($("#movieTitleSelect option:selected").val());
+                            }
+                        });
+                    }
+                });
+            }
+        });
 }
 
 function reDrawElementes () {
@@ -194,7 +204,7 @@ function createMoviePreviewChild (movie, evaluation, _isWatched) {
     var _className = (_isWatched === true) ? 'watched' : 'recommended';
     containerFather.addClass(_className);
 
-    console.log(containerFather.attr('class'));
+    // console.log(containerFather.attr('class'));
     
     var icon = $("<i></i>")
         .addClass("fas fa-film")

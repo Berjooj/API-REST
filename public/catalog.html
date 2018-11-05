@@ -9,7 +9,7 @@
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
    <script src="./scripts/jquery-3.3.1.min.js"></script>
    <script src="./scripts//catalogController.js"></script>
-   <script src="./scripts//miniMovieController.js"></script>
+   <script src="./scripts/voteController.js"></script>
    <style>
       body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
    </style>
@@ -98,7 +98,7 @@
         <div class="w3-container w3-padding-large w3-grey" id="insertMovie">
             <h4><b>Adicione um Filme</b></h4>
             <hr class="w3-opacity">
-            <form action="">
+            <form action="javascript:void(0);" method="POST">
                 <div class="w3-section">
                 <label>Nome</label>
                 <input class="w3-input w3-border" type="text" name="name" id="newMovieInputName" required>

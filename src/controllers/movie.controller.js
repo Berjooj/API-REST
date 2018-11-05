@@ -10,7 +10,7 @@ movieController.createNewMovie = async (request, response) => {
     });
 
     await movie.save((error, movieSuccessfullyRegistredData) => {
-        if(movieSuccessfullyRegistredData) response.status(201).json(movieSuccessfullyRegistredData);
+        if(movieSuccessfullyRegistredData) response.status(201).send();
         else response.status(400).json({'Response': 'Error 400. Bad request.'});
     });
 };
