@@ -5,7 +5,7 @@ let watchListStatusController = {};
 // Update status
 // if already exists -> update
 // else -> create one
-watchListStatusController.setWatchedStatusById = async (request, response) => {
+watchListStatusController.setWatchedStatusByUserId = async (request, response) => {
     let movieId = request.body.movieId;
     let userId  = request.body.userId;
     let isWatched = request.body.status;

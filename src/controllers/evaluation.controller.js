@@ -2,52 +2,71 @@ let EvaluationModel = require("../models/evaluation.model");
 let evaluationController = {};
 
 // Create vote
-evaluationController.createVoteForMovie = async (request, response) => {
-    let evaluation = new EvaluationModel({
-        movieID: request.body.movieID,
-        userID: request.body.userID,
-        evaluation: request.body.movieEvaluation
-    });
+evaluationController.setEvaluationByUserId = async (request, response) => {
+    let movieId = request.body.movieId;
+    let userId  = request.body.userId;
+    let evaluationValue = request.body.evaluation;
+    let evaluationID = "";
+    let updatedEvaluationMovie = [];
 
-    await evaluation.save((error, evaluationSuccessfullyRegistredData) => {
-        if(evaluationSuccessfullyRegistredData) {
-            request.session.userData = evaluationSuccessfullyRegistredData;
-            response.status(201).json({'Response': 'Vote registred successfully.'});
+    let foundMovieToUpdate = await EvaluationModel.find();
+    foundMovieToUpdate.forEach(movieEvaluated => {
+        if (movieEvaluated['movieID'] === movieId && movieEvaluated['userID'] === userId) {
+            updatedEvaluationMovie = movieEvaluated;
+            evaluationID = movieEvaluated['_id'];
         }
-        else response.status(500).json({'Response': 'Error 500, something went wrong.'});
     });
+    
+    if (isEmpty(updatedEvaluationMovie) === 0) {
+        updatedEvaluationMovie = new EvaluationModel ({
+            movieID: movieId,
+            userID: userId,
+            evaluation: parseInt(evaluationValue)
+        });
+        
+        await updatedEvaluationMovie.save();
+    } else {
+        updatedEvaluationMovie['evaluation'] = evaluationValue;
+
+        await EvaluationModel.findByIdAndUpdate(evaluationID, {$set: updatedEvaluationMovie}, {new: true});
+    }
+    return response.status(200).json({'Response': 'Status changed successfully.'});
 };
 
-// Edit vote by id
-evaluationController.editEvaluationById = async (request, response) => {
-    let id =  request.params.id;
+//Get evaluation by userID
+evaluationController.getEvaluationByUserId = async (request,response) => {
+    let userID  = request.params.id;
+    let evaluationDataList = await EvaluationModel.find();
+    let userEvaluations = [];
 
-    let evaluation = {
-        name: request.body.name,
-        movie: request.body.movie,
-        evaluation: request.body.evaluation
-    };
+    evaluationDataList.forEach(movieEvaluated => {
+        if (movieEvaluated['userID'] === userID)
+            userEvaluations[userEvaluations.length] = movieEvaluated;
+    });
 
-    let evaluationData = await Evaluation.findByIdAndUpdate(id, {$set: evaluation}, {new: true});
-    response.status(200).json({'Response': 'Evaluation changed successfully.'});
-}
+    return response.status(200).json(userEvaluations);
+};
 
 // Get list of votes
 evaluationController.getEvaluations = async (request, response) => {
     let evaluationDataList = await EvaluationModel.find();
     response.status(200).json(evaluationDataList);
-}
+};
 
 // Get vote by id
 evaluationController.getEvaluationById = async (request, response) => {
     let evaluationData = await EvaluationModel.findById(request.params.id);
     response.status(200).json(evaluationData);
-}
+};
 
 // Delete vote by id
 evaluationController.deleteEvaluationById = async (request, response) => {
     await Evaluation.findByIdAndRemove(request.params.id);
     response.status(200).json({'Response': 'Evaluation deleted successfully.'});
+};
+
+function isEmpty (obj) {
+    return Object.keys(obj).length;
 }
 
 module.exports = evaluationController;

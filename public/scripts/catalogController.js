@@ -123,6 +123,7 @@ function updateInputs (movieId) {
 }
 
 function setUpContent () {
+        openSelectionCategory('allButton', 'all');
         $("html, body").animate({scrollTop: 0}, 1000);
         // Get user data
         $.ajax({
@@ -219,7 +220,7 @@ function createMoviePreviewChild (movie, evaluation, _isWatched) {
     var movieDescription = $("<p></p>").html(movie['description']);
 
     var ul = $("<ul></ul>")
-        .addClass("rank");
+        .addClass("rank").addClass(movie['_id']);
     
     for (var i = 0; i < 5; i ++) {
         var starLi = $("<li></li>");

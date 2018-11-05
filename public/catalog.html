@@ -47,7 +47,7 @@
                <h1><b>Novidades</b></h1>
                <div class="w3-section w3-bottombar w3-padding-16">
                   <span class="w3-margin-right">Listagem:</span> 
-                  <button class="w3-button w3-blue tablink" onclick="openSelectionCategory(event,'all')">Todos</button>
+                  <button id='allButton' class="w3-button w3-blue tablink" onclick="openSelectionCategory(event,'all')">Todos</button>
                   <button class="w3-button w3-black tablink" onclick="openSelectionCategory(event,'recommended')">Recomendados</button>
                   <button class="w3-button w3-black tablink" onclick="openSelectionCategory(event,'watched')">Assistidos</button>
                </div>
@@ -168,7 +168,11 @@
                 y[i].style.display = "block";
             }
          
-            evt.currentTarget.className = evt.currentTarget.className.replace(" w3-black", " w3-blue");
+            try {
+                evt.currentTarget.className = evt.currentTarget.className.replace(" w3-black", " w3-blue");
+            } catch (exeption){
+                document.getElementById(evt).className = document.getElementById(evt).className.replace(" w3-black", " w3-blue");
+            }
          }
       </script>
    </body>
