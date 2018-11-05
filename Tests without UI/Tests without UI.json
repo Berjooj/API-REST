@@ -1,0 +1,553 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-11-05T20:09:50.058Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_db49c2c91edb4fdd8a8285f9e83d622c",
+			"created": 1541125001886,
+			"description": "",
+			"modified": 1541125001886,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_a4eb3f4e12b144f7aa9dc2b9a6ad3107",
+			"color": null,
+			"created": 1541125001966,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1541125001966,
+			"modified": 1541125001966,
+			"name": "New Environment",
+			"parentId": "wrk_db49c2c91edb4fdd8a8285f9e83d622c",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_1378ef63889642b59deeb2dbbb9ddf3b",
+			"cookies": [
+				{
+					"creation": "2018-11-02T22:36:41.180Z",
+					"domain": "localhost",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "24537776772019915",
+					"key": "connect.sid",
+					"lastAccessed": "2018-11-05T17:52:14.173Z",
+					"path": "/",
+					"value": "s%3AA5pGYlu3x4exFt5jKRVKvcRogUyVH8Tv.SVaDnzGHzvEAnptbpjhOp80scpVaZWvajbFRkyxpLec"
+				},
+				{
+					"creation": "2018-11-05T20:03:17.630Z",
+					"domain": "websitenodejs.herokuapp.com",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "8359919127897548",
+					"key": "connect.sid",
+					"lastAccessed": "2018-11-05T20:03:17.630Z",
+					"path": "/",
+					"value": "s%3Aha0Frdftq27_sqcNfic4yGRQWM2UOY0z.oF2Dj2AaYznYO8aHhl8VXlkTpMjA3DyMhyYp6eNeFP0"
+				}
+			],
+			"created": 1541125001976,
+			"modified": 1541448197630,
+			"name": "Default Jar",
+			"parentId": "wrk_db49c2c91edb4fdd8a8285f9e83d622c",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"created": 1541189535824,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1541189535824,
+			"modified": 1541448413240,
+			"name": "REST API",
+			"parentId": "wrk_db49c2c91edb4fdd8a8285f9e83d622c",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_41a66704ada243d1ba72cba660042493",
+			"authentication": {},
+			"body": {},
+			"created": 1541189552684,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07d4088a69f549a4869f540152422428",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541187790276.5,
+			"method": "GET",
+			"modified": 1541448244474,
+			"name": "GET logout",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/logout",
+			"_type": "request"
+		},
+		{
+			"_id": "req_41064889c0cf43dabb051b8365a8ff71",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Astolfo da Silva\",\n\t\"password\": \"123456\"\n}"
+			},
+			"created": 1541196038771,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07d4088a69f549a4869f540152422428",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541161354164,
+			"method": "POST",
+			"modified": 1541448444604,
+			"name": "POST register missing data",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/registerUser",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1a97b155d36a4a6e9e946f6e2ca5453a",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Astolfo da Silva\",\n\t\"email\": \"aa@aa6.com\",\n\t\"password\": \"123456\"\n}"
+			},
+			"created": 1541197333847,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07d4088a69f549a4869f540152422428",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541175453424,
+			"method": "POST",
+			"modified": 1541448257031,
+			"name": "POST register or duplicatec key (Copy)",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/registerUser",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d0449abaf42046df9bbf0ddc1a8a60e6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"aa@aa4.com\",\n\t\"password\": \"123456\"\n}"
+			},
+			"created": 1541198228258,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07d4088a69f549a4869f540152422428",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541182503054,
+			"method": "POST",
+			"modified": 1541448252024,
+			"name": "POST login",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/dashboard",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2cac667c3ae64ecab0ac3968cd08b8f1",
+			"authentication": {},
+			"body": {},
+			"created": 1541198605835,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07d4088a69f549a4869f540152422428",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541186027869,
+			"method": "GET",
+			"modified": 1541448248837,
+			"name": "GET login session verify",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/dashboard",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6aa3e75a0ce3401bbbb6cdfc1233b388",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Filme 1\",\n\t\"description\": \"É um filme sobre filmes\",\n\t\"duration\": 300\n}"
+			},
+			"created": 1541201555769,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_111449694e2f42b1a05d33c741d5c455",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541201555769,
+			"method": "POST",
+			"modified": 1541448238387,
+			"name": "POST register movie",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/registerMovie",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ca6e457cd23c45f7af0eeea1b0831b20",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Filme 1\",\n\t\"duration\": 300\n}"
+			},
+			"created": 1541201767281,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_111449694e2f42b1a05d33c741d5c455",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541194673022.75,
+			"method": "POST",
+			"modified": 1541448243932,
+			"name": "POST register movie missing data",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "lhttps://websitenodejs.herokuapp.com/registerMovie",
+			"_type": "request"
+		},
+		{
+			"_id": "req_268427684cfb4cd1a3d39b2207480f03",
+			"authentication": {},
+			"body": {},
+			"created": 1541202063827,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541202063827,
+			"method": "GET",
+			"modified": 1541448225030,
+			"name": "GET movie list",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/movieList",
+			"_type": "request"
+		},
+		{
+			"_id": "req_125c9d9b70474b58ae0962b52f4ee419",
+			"authentication": {},
+			"body": {},
+			"created": 1541205092854,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541201936812.5,
+			"method": "GET",
+			"modified": 1541448228798,
+			"name": "GET movie by ID",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/movie/5bddf7b3ea70dc322cca3c4d",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4907e4e98f6e4e0693b72e0387ae08ec",
+			"authentication": {},
+			"body": {},
+			"created": 1541206660406,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541201746290.75,
+			"method": "DELETE",
+			"modified": 1541448232766,
+			"name": "DEL movie by ID",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "/movie/delete/5bdceb9be21ef82a9843720c",
+			"_type": "request"
+		},
+		{
+			"_id": "req_33c6c3d43820457cbc3d01814addaa1d",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Filme 1\",\n\t\"description\": \"Alterei este filme\",\n\t\"duration\": 300\n}"
+			},
+			"created": 1541209442393,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_8db1ddae70454d61bb66c93ce04354b3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541202063877,
+			"method": "PUT",
+			"modified": 1541448222518,
+			"name": "PUT update movie by id",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/movie/edit/5bdcea834a697029f0344a83",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7449709044a24dc8b3593102cdd76bd2",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"movieId\": \"5bdcea834a697029f0344a83\",\n  \"userId\": \"5bdcea834a697029f0344a83\",\n\t\"status\": false\n}"
+			},
+			"created": 1541279373135,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_4f1141d5e426442990c1b608b659254e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541279373135,
+			"method": "POST",
+			"modified": 1541448218346,
+			"name": "POST update movie status",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/setWatched",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2cced0df3ad943f281b90a51b7b2685c",
+			"authentication": {},
+			"body": {},
+			"created": 1541288266793,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_705273d23ea24cfca89ce69446290a6d",
+					"name": "",
+					"value": ""
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541288266793,
+			"method": "GET",
+			"modified": 1541448217190,
+			"name": "GET user watched movielist",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/getWatchedList/5bdd1c2d15800852cc63f00d",
+			"_type": "request"
+		},
+		{
+			"_id": "req_727d393c749145808b176034dce8a5f0",
+			"authentication": {},
+			"body": {},
+			"created": 1541289055577,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541289055577,
+			"method": "GET",
+			"modified": 1541448213371,
+			"name": "GET user not watched movielist",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/getNotWatchedList/5bdd1c2d15800852cc63f00d",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8da98f0d504f4abca9280cc8b61308f1",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"movieId\": \"5bdceb1b5f31c55408a1041b\",\n\t\"userId\": \"5bde5ab0074ba500167430b2\",\n\t\"evaluation\": 3\n}"
+			},
+			"created": 1541390609072,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_f4be94419bc2472286c05e049b2cfe24",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541390609072,
+			"method": "POST",
+			"modified": 1541448210210,
+			"name": "POST update vote by user ID",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/setEvaluation",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f387d375b13e46e1a52a741af081f068",
+			"authentication": {},
+			"body": {},
+			"created": 1541391002970,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541391002970,
+			"method": "GET",
+			"modified": 1541448204587,
+			"name": "GET vote by user ID",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/evaluation/5bde5ab0074ba500167430b2",
+			"_type": "request"
+		},
+		{
+			"_id": "req_163110f30484417ebcc0bbe72cc5f807",
+			"authentication": {},
+			"body": {},
+			"created": 1541391109717,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541391109717,
+			"method": "GET",
+			"modified": 1541448443104,
+			"name": "GET votes",
+			"parameters": [],
+			"parentId": "fld_4316c4943e724465a4b3f17f2fe7a080",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://websitenodejs.herokuapp.com/evaluation",
+			"_type": "request"
+		}
+	]
+}
