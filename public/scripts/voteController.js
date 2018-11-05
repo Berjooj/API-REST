@@ -9,11 +9,6 @@ $(document).ready(function () {
         },
         mouseleave: function () {
             setEvaluationStars();
-            // let starIndex =  parseInt($(this).index('.rank i'));
-            // let ulChildren = $(this).parent().parent();
-            // for (var i = 0; i <= starIndex%5; i++) {
-            //     ulChildren.find('li:eq(' + i + ')').css('color', 'gray');
-            // }
         },
         click: function () {
             let _evaluation =  parseInt($(this).index('.rank i')) % 5;

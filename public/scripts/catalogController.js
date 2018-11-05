@@ -176,16 +176,20 @@ function setUpContent() {
 }
 
 function setEvaluationStars() {
+    $('.rank').toArray().forEach (rankElement => {
+        for (let i = 0; i <= 5; i ++) {
+            $(rankElement).find('li:eq(' + i + ')').css('color', 'gray');
+        }
+    });
+
     evaluationMoviesDataList.forEach(evaluationData => {
         $('.rank').toArray().forEach(rankElement => {
             let evaluationMovieId = $(rankElement).attr('class').split(' ')[1];
-            
+
             if (evaluationData['movieID'] === evaluationMovieId) {
                 //Desenha x estrelas amarelas
                 for (let i = 0; i < parseInt(evaluationData['evaluation']) + 1; i ++) {
                     $(rankElement).find('li:eq(' + i + ')').css('color', 'yellow');
-                } for (let i = parseInt(evaluationData['evaluation']) + 1; i < 5; i ++) {
-                    $(rankElement).find('li:eq(' + i + ')').css('color', 'gray');
                 }
             }
         });
