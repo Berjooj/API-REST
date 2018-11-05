@@ -7,11 +7,10 @@ let evaluationSchema = new mongoose.Schema({
     },
     userID: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     evaluation: {
-        type: Number,
+        type: String,
         required: true
     }
 });

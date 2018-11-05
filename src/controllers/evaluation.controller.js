@@ -21,9 +21,9 @@ evaluationController.setEvaluationByUserId = async (request, response) => {
         updatedEvaluationMovie = new EvaluationModel ({
             movieID: movieId,
             userID: userId,
-            evaluation: parseInt(evaluationValue)
+            evaluation: evaluationValue
         });
-        
+
         await updatedEvaluationMovie.save();
     } else {
         updatedEvaluationMovie['evaluation'] = evaluationValue;
